@@ -1,16 +1,17 @@
 "use client";
 import { useState } from "react";
 // import { useRouter } from "next/router";
-import { useSearchParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { Suspense } from "react";
 export default function Form() {
   //   const router = useRouter();
   const [formData, setFormData] = useState({});
-  const searchParams = useSearchParams();
+  const params = useParams();
   //   console.log(router);
 
-  const code = searchParams.get("code");
-
+  const code = params.code;
+  // const router = useRouter();
+  //   const { code } = useRouter();
   const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     const response = await fetch(

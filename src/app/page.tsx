@@ -5,9 +5,7 @@ import { Suspense } from "react";
 export default function Home() {
   return (
     <>
-      <Suspense>
-        <Form></Form>
-      </Suspense>
+      <Form></Form>
     </>
   );
 }
