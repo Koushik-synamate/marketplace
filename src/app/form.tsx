@@ -2,12 +2,13 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 export default function Form() {
   const router = useRouter();
   const [formData, setFormData] = useState({});
   const searchParams = useSearchParams();
 
-  const code = searchParams.get("code");
+  const code = searchParams.get("/code");
 
   const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
