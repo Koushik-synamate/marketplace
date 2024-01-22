@@ -24,6 +24,7 @@ export default function Form() {
         body: JSON.stringify(formData),
       }
     );
+    window.alert(formData);
     const data = await response.json();
     console.log(data);
     window.alert(data);
