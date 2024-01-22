@@ -1,21 +1,29 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
+import { useSearchParams } from "next/navigation";
 export default function Form() {
   const router = useRouter();
   const [formData, setFormData] = useState({});
+  const searchParams = useSearchParams();
+
+  const code = searchParams.get("code");
 
   const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    // const response = await fetch("/api/submit", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(formData),
-    // });
-    // const data = await response.json();
+    const response = await fetch(
+      "https://x8ki-letl-twmt.n7.xano.io/api:b4aEH6dM/User_Data",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+
     console.log(formData);
   };
 
@@ -23,25 +31,26 @@ export default function Form() {
     setFormData({
       ...formData,
       [event.target.name]: event.target.value,
+      code: code,
     });
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Name:</label>
+      <label htmlFor="location_id">Location_id:</label>
       <input
         type="text"
-        id="name"
-        name="name"
+        id="location_id"
+        name="location_id"
         onChange={handleChange}
         required
       />
       <br />
-      <label htmlFor="email">Email:</label>
+      <label htmlFor="merchant_id">merchant_id:</label>
       <input
-        type="email"
-        id="email"
-        name="email"
+        type="text"
+        id="merchant_id"
+        name="merchant_id"
         onChange={handleChange}
         required
       />
