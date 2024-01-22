@@ -26,7 +26,7 @@ export default function Form() {
     );
     const data = await response.json();
     console.log(data);
-
+    window.alert(data);
     console.log(formData);
   };
 
