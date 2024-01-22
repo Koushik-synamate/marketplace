@@ -8,15 +8,15 @@ export default function Form() {
 
   const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    const response = await fetch("/api/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-    const data = await response.json();
-    console.log(data);
+    // const response = await fetch("/api/submit", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(formData),
+    // });
+    // const data = await response.json();
+    console.log(formData);
   };
 
   const handleChange = (event: { target: { name: any; value: any } }) => {
