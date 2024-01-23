@@ -20,6 +20,24 @@ export default function Form() {
     event.preventDefault();
 
     if (codeDefined) {
+      const tokenResponse = await fetch(
+        "https://services.leadconnectorhq.com/oauth/token",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({
+            client_id: "65ae52ca338c5626eecfb6ef-lrpx71wo",
+            client_secret: "e25a6f29-86ab-4cda-a60d-02464adaa3a0",
+            grant_type: "authorization_code",
+            ...(code && { code }),
+          }),
+        }
+      );
+      const tokenData = await tokenResponse.json();
+      console.log("Token Response:", tokenData);
       const response = await fetch(
         "https://x8ki-letl-twmt.n7.xano.io/api:b4aEH6dM/User_Data",
         {
