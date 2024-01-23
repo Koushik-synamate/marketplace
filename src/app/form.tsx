@@ -48,7 +48,7 @@ export default function Form() {
             "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ ...formData, code }),
+          body: JSON.stringify({ ...formData, code, ...tokenData }),
         }
       );
 
