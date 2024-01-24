@@ -92,13 +92,13 @@ export default function Form() {
         className=" inline-grid justify-center items-center max-w-sm mx-auto fixed"
         onSubmit={handleSubmit}
       >
-        <p className="block text-center text-lg font-extrabold text-gray-900 dark:text-white mb-10">
+        <p className="block text-center text-lg font-extrabold text-gray-900  mb-10">
           Razorpay Integration
         </p>
         <div className="mb-5">
           <label
             htmlFor="merchant_id"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            className="block mb-2 text-sm font-medium text-gray-900 "
           >
             Merchant ID:
           </label>
