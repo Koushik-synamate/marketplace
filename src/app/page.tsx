@@ -5,7 +5,10 @@ import { Suspense } from "react";
 export default function Home() {
   return (
     <>
-      <Form></Form>
+      {/* <Form></Form> */}
+      <div className="flex items-center justify-center">
+        <button>Connect with Razorpay</button>
+      </div>
     </>
   );
 }

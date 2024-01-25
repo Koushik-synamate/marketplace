@@ -2,22 +2,6 @@
 import { useEffect, useState } from "react";
 import { useUrl } from "nextjs-current-url";
 
-// const CopyButton = ({}) => {
-//   return (
-//     <button
-//       onClick={handleCopyClick}
-//       style={{
-//         marginLeft: "10px", // Add any desired styling
-//         cursor: "pointer",
-//         border: "none",
-//         background: "none",
-//       }}
-//     >
-//       <i className="fas fa-copy"></i>
-//     </button>
-//   );
-// };
-
 export default function Form() {
   const { search } = useUrl() ?? {};
   const initialCode = search?.replace("?code=", "");
