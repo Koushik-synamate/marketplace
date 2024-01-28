@@ -1,24 +1,44 @@
 // pages/index.js
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useUrl } from "nextjs-current-url";
+import { Toast } from "primereact/toast";
+import { randomBytes } from "crypto";
+
+const generateRandomString = (length: number) => {
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const randomBytesArray = randomBytes(Math.ceil(length / 2));
+  const randomString = Array.from(
+    randomBytesArray,
+    (byte) => characters[byte % characters.length]
+  ).join("");
+  return randomString.slice(0, length);
+};
 const Home = () => {
+  const toast = useRef<Toast>(null);
   const { search } = useUrl() ?? {};
   const initialCode = search?.replace("?code=", "");
   const [code, setCode] = useState(initialCode);
-  const [formData, setFormData] = useState({});
   const [codeDefined, setCodeDefined] = useState(false);
   const [loading, setLoading] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(true);
+  const state = generateRandomString(17);
   useEffect(() => {
-    if (initialCode !== undefined && initialCode !== null) {
+    console.log(initialCode?.length);
+    if (
+      initialCode !== undefined &&
+      initialCode !== null &&
+      initialCode.length > 0
+    ) {
       setCode(initialCode);
       setCodeDefined(true);
     }
   }, [initialCode]);
   useEffect(() => {
     if (codeDefined) {
+      console.log("sdfsfd");
       setButtonDisabled(false);
     } else {
       setButtonDisabled(true);
@@ -55,17 +75,29 @@ const Home = () => {
             "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({  code, ...tokenData }),
+          body: JSON.stringify({ code, ...tokenData }),
         }
       );
 
       const data = await response.json();
       console.log(data);
-      router.push(
-        "https://auth.razorpay.com/authorize?response_type=code&client_id=NSxAbZB40wuIsx&redirect_uri=https://inspiring-brigadeiros-5fce73.netlify.app/razorpay/success/&scope=read_only&state=current_state"
-      );
+      if (data) {
+        toast.current?.show({
+          severity: "success",
+          summary: "Success",
+          life: 3000,
+        });
+        router.push(
+          "https://auth.razorpay.com/authorize?response_type=code&client_id=NSxAbZB40wuIsx&redirect_uri=https://inspiring-brigadeiros-5fce73.netlify.app/razorpay/success/&scope=read_only&state=${state}"
+        );
+      }
     } else {
-      console.log("Code is not defined, waiting...");
+      toast.current?.show({
+        severity: "error",
+        summary: "Error",
+        detail: "Invalid Authorization Code",
+        life: 3000,
+      });
     }
   };
 
@@ -76,13 +108,13 @@ const Home = () => {
         <p className="text-lg mb-6">Connect with Razorpay to make a payment.</p>
         <button
           onClick={onClick}
-          disabled={loading || buttonDisabled}
+          disabled={buttonDisabled}
           className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${
             buttonDisabled ? "opacity-50 cursor-not-allowed" : ""
           }`}
           // className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         >
-          {loading ? "Connecting..." : "Connect with Razorpay"}
+          {buttonDisabled ? "Connecting..." : "Connect with Razorpay"}
         </button>
       </div>
     </div>
