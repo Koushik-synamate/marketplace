@@ -5,17 +5,7 @@ import { useRouter } from "next/navigation";
 import { useUrl } from "nextjs-current-url";
 import { Toast } from "primereact/toast";
 import { randomBytes } from "crypto";
-
-const generateRandomString = (length: number) => {
-  const characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  const randomBytesArray = randomBytes(Math.ceil(length / 2));
-  const randomString = Array.from(
-    randomBytesArray,
-    (byte) => characters[byte % characters.length]
-  ).join("");
-  return randomString.slice(0, length);
-};
+import cryptoRandomString from "crypto-random-string";
 const Home = () => {
   const toast = useRef<Toast>(null);
   const { search } = useUrl() ?? {};
@@ -24,7 +14,7 @@ const Home = () => {
   const [codeDefined, setCodeDefined] = useState(false);
   const [loading, setLoading] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(true);
-  const state = generateRandomString(17);
+  const state = cryptoRandomString({ length: 17 });
   useEffect(() => {
     console.log(initialCode?.length);
     if (
@@ -75,7 +65,7 @@ const Home = () => {
             "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ code, ...tokenData }),
+          body: JSON.stringify({ code, ...tokenData, state }),
         }
       );
 
