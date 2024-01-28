@@ -14,12 +14,8 @@ const Home = () => {
   const [codeDefined, setCodeDefined] = useState(false);
   const [loading, setLoading] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(true);
-<<<<<<< HEAD
+
   const state = cryptoRandomString({ length: 17 });
-=======
-  const state = generateRandomString(17);
-  console.log(state+"dsfds");
->>>>>>> ee3f6721cd31b43c5add691176667fe1b59b1c92
   useEffect(() => {
     console.log(initialCode?.length);
     if (
