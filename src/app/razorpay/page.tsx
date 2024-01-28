@@ -25,6 +25,7 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const state = generateRandomString(17);
+  console.log(state+"dsfds");
   useEffect(() => {
     console.log(initialCode?.length);
     if (
