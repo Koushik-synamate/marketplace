@@ -66,11 +66,7 @@ const Home = () => {
             "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
             "Content-Type": "application/json",
           },
-<<<<<<< HEAD
           body: JSON.stringify({ code, ...tokenData, state }),
-=======
-          body: JSON.stringify({ code, ...tokenData , state}),
->>>>>>> ee3f6721cd31b43c5add691176667fe1b59b1c92
         }
       );
 
