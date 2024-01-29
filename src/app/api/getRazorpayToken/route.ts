@@ -8,8 +8,8 @@ interface RequestWithAuthorizationCode extends NextApiRequest {
 }
 export async function POST(req: RequestWithAuthorizationCode) {
   const authorizationCode = req.body;
-  const clientId = "NUQBXN2MccPRWf";
-  const clientSecret = "mq64JWzv89WmQkbECREvEnh4";
+  const clientId = "NUSKb4cAK4iP9e";
+  const clientSecret = "CpZxiqNI6nclpwkrPWuMnYnN";
   const tokenRequestOptions = {
     method: "POST",
     headers: {
@@ -34,7 +34,7 @@ export async function POST(req: RequestWithAuthorizationCode) {
     // Forward the Razorpay response to the client
     return NextResponse.json(tokenData);
   } catch (error) {
-    // console.error('Error fetching Razorpay token:', error?.message);
+    console.error("Error fetching Razorpay token:", error?.message);
     return NextResponse.json({ error: "Internal Server Error" });
   }
 }
