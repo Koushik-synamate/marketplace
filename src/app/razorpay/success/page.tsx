@@ -18,8 +18,8 @@ const Success = () => {
         const tokenRequestOptions = {
           method: "POST",
           headers: {
+            "Access-Control-Allow-Origin": "*",
             "Content-Type": "application/json",
-            "mode": "no-cors",
           },
           body: JSON.stringify({
             client_id: clientId,
