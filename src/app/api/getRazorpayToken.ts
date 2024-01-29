@@ -1,6 +1,6 @@
 // pages/api/getRazorpayToken.js
 import fetch from "node-fetch";
-
+import type { NextApiRequest, NextApiResponse } from "next";
 export default async function handler(
   req: { method: string; body: { authorizationCode: any } },
   res: {
@@ -50,3 +50,7 @@ export default async function handler(
     res.status(500).json({ error: "Internal Server Error" });
   }
 }
+
+// export default function handler(req: NextApiRequest, res: NextApiResponse) {
+//   res.status(200).json({ message: "Hello from getRazorpayToken API" });
+// }
