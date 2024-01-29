@@ -19,7 +19,8 @@ const Success = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Origin":
+              "https://inspiring-brigadeiros-5fce73.netlify.app",
             "Access-Control-Allow-Headers": "Content-Type",
             "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
             mode: "cors",
