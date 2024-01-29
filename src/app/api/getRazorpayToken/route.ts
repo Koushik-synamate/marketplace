@@ -8,8 +8,8 @@ interface RequestWithAuthorizationCode extends NextApiRequest {
 }
 export async function POST(req: RequestWithAuthorizationCode) {
   const authorizationCode = req.body;
-  const clientId = "NSxAbB5xHAu49P";
-  const clientSecret = "A9mPRtxho2XyvOBy1Yi3jQ9F";
+  const clientId = "NSxAbZB40wuIsx";
+  const clientSecret = "gd6yqfGy3hetd4iqZHMj9bwL";
   const tokenRequestOptions = {
     method: "POST",
     headers: {
@@ -22,7 +22,7 @@ export async function POST(req: RequestWithAuthorizationCode) {
       redirect_uri:
         "https://inspiring-brigadeiros-5fce73.netlify.app/razorpay/success",
       code: authorizationCode,
-      mode: "test",
+      mode: "live",
     }),
   };
   try {
