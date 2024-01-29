@@ -11,34 +11,21 @@ const Success = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (codeMatch && stateMatch) {
-        const clientId = "NSxAbB5xHAu49P";
-        const clientSecret = "A9mPRtxho2XyvOBy1Yi3jQ9F";
         const authorizationCode = codeMatch[1];
 
         const tokenRequestOptions = {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin":
-              "https://inspiring-brigadeiros-5fce73.netlify.app",
-            "Access-Control-Allow-Headers": "Content-Type",
-            "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-            mode: "cors",
           },
           body: JSON.stringify({
-            client_id: clientId,
-            client_secret: clientSecret,
-            grant_type: "authorization_code",
-            redirect_uri:
-              "https://inspiring-brigadeiros-5fce73.netlify.app/razorpay/success",
             code: authorizationCode,
-            mode: "test",
           }),
         };
 
         try {
           const tokenResponse = await fetch(
-            "https://auth.razorpay.com/token",
+            "/api/getRazorpayToken",
             tokenRequestOptions
           );
 
