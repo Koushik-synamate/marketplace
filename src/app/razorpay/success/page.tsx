@@ -12,8 +12,8 @@ const Success = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (codeMatch && stateMatch) {
-        const clientId = "<YOUR_CLIENT_ID>";
-        const clientSecret = "<YOUR_CLIENT_SECRET>";
+        const clientId = "NSxAbB5xHAu49P";
+        const clientSecret = "A9mPRtxho2XyvOBy1Yi3jQ9F";
         const authorizationCode = codeMatch[1];
 
         const tokenRequestOptions = {
@@ -45,7 +45,6 @@ const Success = () => {
           const tokenData = await tokenResponse.json();
           console.log("Token Response:", tokenData);
 
-          // Assuming you have user data to send in the next request
           const userRazorpayRequestOptions = {
             method: "POST",
             headers: {
