@@ -34,7 +34,7 @@ export async function POST(req: RequestWithAuthorizationCode) {
     // Forward the Razorpay response to the client
     return NextResponse.json(tokenData);
   } catch (error) {
-    console.error("Error fetching Razorpay token:", error?.message);
+    console.log("Error fetching Razorpay token:", error?.message);
     return NextResponse.json({ error: "Internal Server Error" });
   }
 }
