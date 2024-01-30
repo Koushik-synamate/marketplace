@@ -49,6 +49,8 @@ const Success = () => {
               ...tokenData,
             }),
           };
+          console.log(...tokenData);
+          console.log(userRazorpayRequestOptions);
 
           const userRazorpayResponse = await fetch(
             "https://x8ki-letl-twmt.n7.xano.io/api:b4aEH6dM/User_Razorpay",
