@@ -78,7 +78,7 @@ const Home = () => {
           life: 3000,
         });
         router.push(
-          `https://auth.razorpay.com/authorize?response_type=code&client_id=NUSKb4cAK4iP9e&redirect_uri=https://inspiring-brigadeiros-5fce73.netlify.app/razorpay/success/&scope=read_only&state=${state}`
+          `https://auth.razorpay.com/authorize?response_type=code&client_id=NUSKb4cAK4iP9e&redirect_uri=https://inspiring-brigadeiros-5fce73.netlify.app/razorpay/success/&scope=read_write&state=${state}`
         );
       }
     } else {
