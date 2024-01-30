@@ -4,7 +4,6 @@ import { useUrl } from "nextjs-current-url";
 import { useEffect } from "react";
 const Success = () => {
   const { search } = useUrl() ?? {};
-  console.log(search);
   const codeMatch = search?.match(/code=([^&]*)/);
   const stateMatch = search?.match(/state=([^&]*)/);
 
@@ -17,11 +16,13 @@ const Success = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Accept: "application/json",
           },
           body: JSON.stringify({
             code: authorizationCode,
           }),
         };
+        console.log(tokenRequestOptions);
 
         try {
           const tokenResponse = await fetch(

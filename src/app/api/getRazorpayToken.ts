@@ -2,7 +2,7 @@
 import fetch from "node-fetch";
 import type { NextApiRequest, NextApiResponse } from "next";
 export default async function handler(
-  req: { method: string; body: { authorizationCode: any } },
+  req: { method: string; body: { code: any } },
   res: {
     status: (arg0: number) => {
       (): any;
@@ -17,7 +17,9 @@ export default async function handler(
     return res.status(405).end(); // Method Not Allowed
   }
 
-  const { authorizationCode } = req.body;
+  const { code } = req.body;
+  console.log(req);
+
   const clientId = "NSxAbB5xHAu49P";
   const clientSecret = "A9mPRtxho2XyvOBy1Yi3jQ9F";
   const tokenRequestOptions = {
@@ -31,7 +33,7 @@ export default async function handler(
       grant_type: "authorization_code",
       redirect_uri:
         "https://inspiring-brigadeiros-5fce73.netlify.app/razorpay/success",
-      code: authorizationCode,
+      code: code,
       mode: "test",
     }),
   };
