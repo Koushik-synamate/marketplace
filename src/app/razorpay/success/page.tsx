@@ -12,7 +12,7 @@ const Success = () => {
     const fetchData = async () => {
       if (codeMatch && stateMatch) {
         const authorizationCode = codeMatch[1];
-
+        console.log(authorizationCode);
         const tokenRequestOptions = {
           method: "POST",
           headers: {
