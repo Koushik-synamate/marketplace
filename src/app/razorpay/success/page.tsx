@@ -49,7 +49,7 @@ const Success = () => {
               ...tokenData,
             }),
           };
-          console.log(...tokenData);
+          // console.log(...tokenData);
           console.log(userRazorpayRequestOptions);
 
           const userRazorpayResponse = await fetch(
