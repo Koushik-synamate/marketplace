@@ -11,6 +11,7 @@ const Success = () => {
     const fetchData = async () => {
       if (codeMatch && stateMatch) {
         const authorizationCode = codeMatch[1];
+        const state= stateMatch[1];
         console.log(authorizationCode);
         const tokenRequestOptions = {
           method: "POST",
@@ -47,6 +48,7 @@ const Success = () => {
             },
             body: JSON.stringify({
               ...tokenData,
+              state
             }),
           };
           // console.log(...tokenData);
