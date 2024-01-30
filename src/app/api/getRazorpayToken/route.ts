@@ -29,6 +29,7 @@ export async function POST(req: RequestWithAuthorizationCode) {
       "https://auth.razorpay.com/token",
       tokenRequestOptions
     );
+    console.log("https://auth.razorpay.com/token", tokenRequestOptions);
     const tokenData = await tokenResponse.json();
 
     // Forward the Razorpay response to the client
